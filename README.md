@@ -1,36 +1,36 @@
-# Conversor de Bases Numéricas 🔢
+# conversor-de-bases
 
-**Site no ar:** https://davipontodev.github.io/conversor-de-bases/
+Site no ar: https://davipontodev.github.io/conversor-de-bases/
 
-Ferramenta web que converte números inteiros entre binário, octal, decimal e hexadecimal e mostra o passo a passo das conversões.
+Fiz esse conversor pra treinar o conteúdo de bases numéricas que vi em Introdução a Conceitos de Computação (TI - UFMS) e praticar HTML, CSS e JavaScript de Fundamentos de Web.
 
-Projeto feito para praticar os conteúdos de **Introdução a Conceitos de Computação**, **Pensamento Computacional** e **Fundamentos de Web** do curso de TI da UFMS.
+Ele converte números inteiros entre binário, octal, decimal e hexadecimal e mostra a conta passo a passo, do jeito que a gente faz no caderno.
 
-## Funcionalidades
+## O que ele faz
 
-- **Conversão em tempo real** entre as bases 2, 8, 10 e 16 enquanto o usuário digita.
-- **Passo a passo da soma posicional:** mostra como o número vira decimal (ex.: `1×2^5 + 0×2^4 + ...`).
-- **Tabela de divisões sucessivas:** mostra cada divisão por 2 e o resto, como é feito no papel.
-- **Validação:** avisa quando um dígito não existe na base escolhida (ex.: `2` em binário).
-- **Números grandes:** usa `BigInt`, então funciona com valores além do limite normal do JavaScript.
-- **Algoritmos próprios:** a conversão é feita "na mão", sem usar `parseInt` ou `toString(base)`.
+- converte enquanto você digita
+- mostra a soma posicional (ex.: `1×2^5 + 0×2^4 + ...`) pra chegar no decimal
+- mostra a tabela das divisões sucessivas por 2
+- avisa quando você digita um dígito que não existe na base (tipo `2` em binário)
+- tem 3 botões de exemplo pra testar rápido
 
-## Tecnologias Utilizadas
-
-- HTML5
-- CSS3 (Flexbox e Grid, layout responsivo)
-- JavaScript puro (sem frameworks)
+Fiz as conversões "na mão", sem usar `parseInt` nem `toString(base)`, porque a ideia era entender o algoritmo. Usei `BigInt` pra funcionar com números grandes também.
 
 ## Como funciona
 
-**Qualquer base → decimal:** cada dígito é multiplicado pela base elevada à sua posição, e os resultados são somados.
+- **de qualquer base pra decimal:** cada dígito é multiplicado pela base elevada à posição dele, e soma tudo
+- **de decimal pra outra base:** vai dividindo pela base e guardando o resto. Os restos lidos de baixo pra cima dão o resultado
 
-**Decimal → qualquer base:** o número é dividido pela base várias vezes; os restos, lidos de baixo para cima, formam o resultado.
+## Tecnologias
 
-## Como Executar o Projeto
+- HTML
+- CSS
+- JavaScript
 
-1. Clone ou baixe este repositório:
-   ```bash
-   git clone https://github.com/davipontodev/conversor-de-bases.git
-   ```
-2. Abra o arquivo `index.html` no navegador.
+## Como rodar
+
+É só abrir o link do site ou baixar o repositório e abrir o `index.html` no navegador.
+
+```bash
+git clone https://github.com/davipontodev/conversor-de-bases.git
+```
