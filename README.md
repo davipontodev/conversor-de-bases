@@ -4,7 +4,7 @@
 
 Ferramenta web que converte números inteiros entre binário, octal, decimal e hexadecimal e mostra o passo a passo das conversões.
 
-Projeto feito para praticar os conteúdos de **Introdução à Ciência da Computação**, **Pensamento Computacional** e **Fundamentos de Web** do curso de TI da UFMS.
+Projeto feito para praticar os conteúdos de **Introdução a Conceitos de Computação**, **Pensamento Computacional** e **Fundamentos de Web** do curso de TI da UFMS.
 
 ## Funcionalidades
 
