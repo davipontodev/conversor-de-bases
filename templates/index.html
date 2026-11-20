@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Bases Numéricas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="layout-box">
+        <div class="painel-preto">
+            <h1>Conversor de Bases</h1>
+            <p>Converta números inteiros entre binário, octal, decimal e hexadecimal e veja o passo a passo de cada conversão.</p>
+            <div class="exemplos">
+                <a class="btn-outline" href="{{ url_for('index', numero='255', base=10) }}">255 (dec)</a>
+                <a class="btn-outline" href="{{ url_for('index', numero='101101', base=2) }}">101101 (bin)</a>
+                <a class="btn-outline" href="{{ url_for('index', numero='1F4', base=16) }}">1F4 (hex)</a>
+            </div>
+        </div>
+
+        <div class="area-conteudo">
+            <h2>Número de entrada</h2>
+            <form method="GET" action="{{ url_for('index') }}">
+                <div class="linha">
+                    <input type="text" name="numero" value="{{ numero }}" placeholder="Digite um número inteiro" autocomplete="off" spellcheck="false">
+                    <select name="base">
+                        <option value="2" {{ 'selected' if base == 2 }}>Binário (base 2)</option>
+                        <option value="8" {{ 'selected' if base == 8 }}>Octal (base 8)</option>
+                        <option value="10" {{ 'selected' if base == 10 }}>Decimal (base 10)</option>
+                        <option value="16" {{ 'selected' if base == 16 }}>Hexadecimal (base 16)</option>
+                    </select>
+                </div>
+                <button class="btn-preto btn-converter" type="submit">Converter</button>
+            </form>
+            <p class="erro">{{ erro or '' }}</p>
+
+            <div class="resultados">
+                <div class="cartao"><span>Binário</span><strong>{{ resultado.binario if resultado else '—' }}</strong></div>
+                <div class="cartao"><span>Octal</span><strong>{{ resultado.octal if resultado else '—' }}</strong></div>
+                <div class="cartao"><span>Decimal</span><strong>{{ resultado.decimal if resultado else '—' }}</strong></div>
+                <div class="cartao"><span>Hexadecimal</span><strong>{{ resultado.hexa if resultado else '—' }}</strong></div>
+            </div>
+
+            {% if resultado %}
+            <div class="passos">
+                <h3>{{ resultado.titulo }}</h3>
+                <p class="formula">{{ resultado.formula }}</p>
+
+                <h3>2. Do decimal para binário (divisões sucessivas por 2)</h3>
+                <table>
+                    <thead>
+                        <tr><th>Dividendo</th><th>Quociente</th><th>Resto</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for dividendo, quociente, resto in resultado.divisoes %}
+                        <tr><td>{{ dividendo }}</td><td>{{ quociente }}</td><td><strong>{{ resto }}</strong></td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p class="dica">Lendo os restos de baixo para cima, temos o número em binário.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
