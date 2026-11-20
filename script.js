@@ -50,8 +50,9 @@ function agruparBinario(texto) {
 }
 
 function mostrarPassos(texto, base, decimal, divisoes) {
-    document.getElementById("titulo-para-decimal").textContent =
-        `1. Do ${NOMES_BASES[base]} para decimal (soma posicional)`;
+    document.getElementById("titulo-para-decimal").textContent = base === 10
+        ? "1. Número em decimal"
+        : `1. Do ${NOMES_BASES[base]} para decimal (soma posicional)`;
 
     if (base === 10) {
         document.getElementById("para-decimal").textContent = `O número já está em decimal: ${decimal}`;
